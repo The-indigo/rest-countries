@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import './Country.css';
 
 const StyledCountry = styled.div` 
@@ -19,10 +19,11 @@ margin-bottom:3rem;
   }
 `
 
-const Country=({imageSource,countryName,population,region,capital}) => {
+const Country=({imageSource,countryName,population,region,capital,click}) => {
     return (
-        <StyledCountry>
-            <img src={imageSource} />
+        <StyledCountry onClick={click}>
+            
+            <img src={imageSource} alt="Flag of the country" />
             <div className="details-div">
    <h4>{countryName}</h4>
             <p className="details">Population: <span className="details-1">{population}</span></p>
