@@ -1,9 +1,15 @@
+.back-botton-dark {
+    background-color: hsl(209, 23%, 22%);
+    width: 20%;
+}
+
 .border-countries-div {
     border: 2px solid red;
     display: flex;
 }
 
 
-.countrydetails-div-dark {
+.countrydetails-div-dark,
+.back-botton-dark {
     color: hsl(0, 0%, 100%);
 }

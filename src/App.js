@@ -79,61 +79,64 @@ function App() {
         </div>
       </div>
       <div className="container">
-        <div className="input-div">
-          <input
-            type="text"
-            className="search-box"
-            placeholder="Search for a country..."
-          />
-          <div className="select-div">
-            <select id="region" name="region" className="select-options">
-              <option value="volv">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="fiat">Fiat</option>
-              <option value="audi">Audi</option>
-              <option value="volv">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="fiat">Fiat</option>
-              <option value="audi">Audi</option>
-            </select>
-          </div>
-        </div>
-
-        {toDetailsScreen ? (
-          <CountryDetails
-            goBack={goBack}
-            nativeName={countryDetail.nativeName}
-            imageSource={countryDetail.imageSource}
-                countryName={countryDetail.countryName}
-            population={countryDetail.population}
-            region={countryDetail.region}
-            subRegion={countryDetail.subRegion}
-            capital={countryDetail.capital}
-            topLevelDomain={countryDetail.topLevelDomain}
-            currencies={countryDetail.currencies}
-            languages={countryDetail.languages.map(val => <span key={val}>{val},</span>)}
-            borderCountries={countryDetail.borderCountries.map(val =>
-            <Button key={val} buttonText={val} />
-            )}
+        {toDetailsScreen ?
+          
+            <CountryDetails
+              goBack={goBack}
+              nativeName={countryDetail.nativeName}
+              imageSource={countryDetail.imageSource}
+              countryName={countryDetail.countryName}
+              population={countryDetail.population}
+              region={countryDetail.region}
+              subRegion={countryDetail.subRegion}
+              capital={countryDetail.capital}
+              topLevelDomain={countryDetail.topLevelDomain}
+              currencies={countryDetail.currencies}
+              languages={countryDetail.languages.map(val => <span key={val}>{val},</span>)}
+              borderCountries={countryDetail.borderCountries.map(val =>
+                <Button key={val} buttonText={val} />
+              )}
             
-          />
-        ) : (
-          <main className="main">
-            {country.map((n) => (
-              <Country
-                click={() => goToDetails(n.name.official)}
-                key={n.name.official}
-                imageSource={n.flags.png}
-                countryName={n.name.common}
-                population={n.population}
-                region={n.region}
-                capital={n.capital}
-              />
-            ))}
-          </main>
-        )}
+            />
+          
+          :        
+          
+        <><div className="input-div">
+            <input
+              type="text"
+              className="search-box"
+              placeholder="Search for a country..." />
+            <div className="select-div">
+              <select id="region" name="region" className="select-options">
+                <option value="volv">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="fiat">Fiat</option>
+                <option value="audi">Audi</option>
+                <option value="volv">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="fiat">Fiat</option>
+                <option value="audi">Audi</option>
+              </select>
+            </div>
+          </div><main className="main">
+              {country.map((n) => (
+                <Country
+                  click={() => goToDetails(n.name.official)}
+                  key={n.name.official}
+                  imageSource={n.flags.png}
+                  countryName={n.name.common}
+                  population={n.population}
+                  region={n.region}
+                  capital={n.capital} />
+              ))}
+            </main></>
+
+
+          
+        }
       </div>
     </div>
+       
   );
 }
 

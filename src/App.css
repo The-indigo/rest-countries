@@ -4,7 +4,6 @@
   margin: 0 auto;
 }
 
-
 .header {
   margin-bottom: 1rem;
 }
@@ -12,7 +11,6 @@
 .header-dark {
   color: hsl(0, 0%, 100%);
   background-color: hsl(209, 23%, 22%);
-  /* border-radius: 1px; */
 }
 
 .header-light {

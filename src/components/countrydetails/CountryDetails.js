@@ -15,7 +15,7 @@ const CountryDetails = ({
 }) => {
   return(
     <div>
-      <div className="back-botton">
+      <div className="back-botton-dark">
         <p onClick={goBack}> Back</p>
       </div>
       <main className="countrydetails-div countrydetails-div-dark">
@@ -34,7 +34,7 @@ const CountryDetails = ({
             <p>Capital: {capital}</p>
           </div>
 
-          <div className="details-text-2">
+          <div className="countrydetails-text-2">
             <p>Top Level Domain: {topLevelDomain}</p>
             <p>Currencies: {currencies}</p>
             <p>Languages: {languages}</p>
