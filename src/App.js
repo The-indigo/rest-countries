@@ -42,6 +42,7 @@ function App() {
   const goToDetails = (id) => {
     const getCountry = country.find((n) => n.name.official === id);
     if (getCountry) {
+      console.log(Object.values(getCountry.name.nativeName)[0].common)
       const borders = [];
 
       getCountry.borders.forEach(element => {
@@ -61,8 +62,8 @@ function App() {
             topLevelDomain:getCountry.tld,
             currencies:Object.values(getCountry.currencies)[0].name,
             languages:Object.values(getCountry.languages),
-        borderCountries:borders
-            // nativeName: '',
+        borderCountries:borders,
+            nativeName: Object.values(getCountry.name.nativeName)[0].common,
 
       } );
       setToDetailsScreen(true);
@@ -101,6 +102,7 @@ function App() {
         {toDetailsScreen ? (
           <CountryDetails
             goBack={goBack}
+            nativeName={countryDetail.nativeName}
             imageSource={countryDetail.imageSource}
                 countryName={countryDetail.countryName}
             population={countryDetail.population}
@@ -111,8 +113,9 @@ function App() {
             currencies={countryDetail.currencies}
             languages={countryDetail.languages.map(val => <span key={val}>{val},</span>)}
             borderCountries={countryDetail.borderCountries.map(val =>
-            <Button key={val} buttonText={val} /> 
+            <Button key={val} buttonText={val} />
             )}
+            
           />
         ) : (
           <main className="main">
