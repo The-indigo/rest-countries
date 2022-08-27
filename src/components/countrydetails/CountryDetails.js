@@ -15,12 +15,12 @@ const CountryDetails = ({
 }) => {
   return(
     <div>
-      <div className="back-botton-dark">
+      <div className="back-button back-button-dark">
         <p onClick={goBack}> Back</p>
       </div>
       <main className="countrydetails-div countrydetails-div-dark">
         <div className="image-div">
-          <img src={imageSource} alt="country flag" />
+          <img className='countrydetails-img' src={imageSource} alt="country flag" />
         </div>
         <div className="countrydetails-div">
                   <h4>{countryName}</h4>

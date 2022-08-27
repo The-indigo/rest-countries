@@ -1,6 +1,12 @@
-.back-botton-dark {
+.back-button {
     background-color: hsl(209, 23%, 22%);
     width: 20%;
+    padding: 5px;
+    text-align: center;
+}
+
+.back-button p {
+    margin: 0;
 }
 
 .border-countries-div {
@@ -10,6 +16,16 @@
 
 
 .countrydetails-div-dark,
-.back-botton-dark {
+.back-button-dark {
     color: hsl(0, 0%, 100%);
+}
+
+@media (min-width:376px) {
+    .image-div {
+        width: 45%;
+    }
+
+    .back-button {
+        width: 10%;
+    }
 }
