@@ -10,12 +10,13 @@
 }
 
 .border-countries-div {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     display: flex;
     align-items: center;
     gap: .5rem;
     flex-wrap: wrap;
 }
+
 
 .countrydetails-text-2 {
     margin-top: 2.5rem;
@@ -48,6 +49,7 @@
 .countrydetails-p {
     font-weight: 600;
     font-size: .8rem;
+    margin-bottom: 0;
 }
 
 .countrydetails-span {
