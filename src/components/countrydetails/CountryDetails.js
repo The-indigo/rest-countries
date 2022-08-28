@@ -27,21 +27,22 @@ const CountryDetails = ({
                   
                   <div className="details-text-div">
                           <div className="details-text-1">
-            <p>Native Name: {nativeName}</p>
-            <p>Population: {population}</p>
-            <p>Region: {region}</p>
-            <p>Sub-Region: {subRegion}</p>
-            <p>Capital: {capital}</p>
+            <p className='countrydetails-p'>Native Name: <span className='countrydetails-span'>{nativeName}</span></p>
+            <p className='countrydetails-p'>Population: <span className='countrydetails-span'>{population}</span> </p>
+            <p className='countrydetails-p'>Region: <span className='countrydetails-span'>{region}</span></p>
+            <p className='countrydetails-p'>Sub-Region: <span className='countrydetails-span'>{subRegion}</span></p>
+            <p className='countrydetails-p'>Capital: <span className='countrydetails-span'>{capital}</span> </p>
           </div>
 
           <div className="countrydetails-text-2">
-            <p>Top Level Domain: {topLevelDomain}</p>
-            <p>Currencies: {currencies}</p>
-            <p>Languages: {languages}</p>
+            <p className='countrydetails-p'>Top Level Domain: <span className='countrydetails-span'>{topLevelDomain}</span></p>
+            <p className='countrydetails-p'>Currencies: <span className='countrydetails-span'>{currencies}</span></p>
+            <p className='countrydetails-p'>Languages: <span className='countrydetails-span'>{languages}</span></p>
           </div> 
                   </div>
                   <div className="border-countries-div">
-                      <p>Border Countries:<span>{ borderCountries} </span> </p>
+                      <p className='countrydetails-p'>Border Countries:</p>
+                          <div>{borderCountries} </div> 
                   </div>
 
      

@@ -46,15 +46,15 @@ function App() {
       const borders = [];
 
       getCountry.borders.forEach(element => {
-       const border=country.find(n=>n.cioc===element)
+       const border=country.find(n=>n.cca3===element)
         if (border) {
-        borders.push(border.name.official)
+        borders.push(border.name.common)
       }
      });
 
       setCountryDetail({
         imageSource: getCountry.flags.png,
-            countryName:getCountry.name.official,
+            countryName:getCountry.name.common,
             population:getCountry.population,
             region:getCountry.region,
             subRegion:getCountry.subregion,
@@ -72,7 +72,7 @@ function App() {
   };
   return (
     <div>
-      <div className={`header ${mode ? "header-dark" : "header-light"}`}>
+      <div className={`header ${mode ? "header-light" : "header-dark"}`}>
         <div className="header-container container">
           <h4>Where in the world?</h4>
           <p onClick={toggleMode}>Dark Mode</p>

@@ -10,14 +10,31 @@
 }
 
 .border-countries-div {
-    border: 2px solid red;
+    margin-top: 2rem;
     display: flex;
+    align-items: center;
+    gap: .5rem;
+    flex-wrap: wrap;
 }
 
+.countrydetails-div {
+    margin-bottom: 2rem;
+    /* border: 2px solid red; */
+}
 
 .countrydetails-div-dark,
 .back-button-dark {
     color: hsl(0, 0%, 100%);
+}
+
+.countrydetails-p {
+    font-weight: 600;
+    font-size: .8rem;
+}
+
+.countrydetails-span {
+    font-weight: 400;
+    font-size: .8rem;
 }
 
 @media (min-width:376px) {

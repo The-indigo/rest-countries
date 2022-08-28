@@ -16,6 +16,7 @@ margin-bottom:3rem;
   }
   @media (min-width:376px ) {
     width:22%;
+   
   }
 `
 
@@ -23,7 +24,7 @@ const Country=({imageSource,countryName,population,region,capital,click}) => {
     return (
         <StyledCountry onClick={click}>
             
-            <img src={imageSource} alt="Flag of the country" />
+            <img className="country-img" src={imageSource} alt="Flag of the country" />
             <div className="details-div">
    <h4>{countryName}</h4>
             <p className="details">Population: <span className="details-1">{population}</span></p>
