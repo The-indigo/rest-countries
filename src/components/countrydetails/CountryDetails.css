@@ -17,6 +17,10 @@
     flex-wrap: wrap;
 }
 
+.countrydetails-text-2 {
+    margin-top: 2.5rem;
+}
+
 .countrydetails-div {
     margin-bottom: 2rem;
     margin-top: 3rem;
@@ -51,17 +55,22 @@
     font-size: .8rem;
 }
 
-.countrydetails-text-div {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
+
 
 @media (min-width:376px) {
     .image-div {
-        /* border: 2px solid blue; */
         width: 50%;
 
+    }
+
+    .countrydetails-text-2 {
+        margin-top: 0;
+    }
+
+    .countrydetails-text-div {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
     }
 
     .countrydetails-details-div {
