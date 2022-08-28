@@ -19,8 +19,20 @@
 
 .countrydetails-div {
     margin-bottom: 2rem;
-    /* border: 2px solid red; */
+    margin-top: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
+
+.countrydetails-details-div {
+    align-self: center;
+}
+
+.image-div {
+    width: 100%;
+}
+
 
 .countrydetails-div-dark,
 .back-button-dark {
@@ -37,9 +49,21 @@
     font-size: .8rem;
 }
 
+.countrydetails-text-div {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
 @media (min-width:376px) {
     .image-div {
-        width: 45%;
+        width: 40%;
+
+    }
+
+    .countrydetails-details-div {
+        align-self: center;
+        width: 50%;
     }
 
     .back-button {

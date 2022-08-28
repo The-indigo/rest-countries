@@ -22,10 +22,10 @@ const CountryDetails = ({
         <div className="image-div">
           <img className='countrydetails-img' src={imageSource} alt="country flag" />
         </div>
-        <div className="countrydetails-div">
+        <div className="countrydetails-details-div">
                   <h4>{countryName}</h4>
                   
-                  <div className="details-text-div">
+                  <div className="countrydetails-text-div">
                           <div className="details-text-1">
             <p className='countrydetails-p'>Native Name: <span className='countrydetails-span'>{nativeName}</span></p>
             <p className='countrydetails-p'>Population: <span className='countrydetails-span'>{population}</span> </p>
