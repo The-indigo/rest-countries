@@ -2,6 +2,8 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Country from "./components/country/Country";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch,faAngleDown} from '@fortawesome/free-solid-svg-icons'
 import CountryDetails from "./components/countrydetails/CountryDetails";
 import Button from "./components/Buton/Button";
 
@@ -24,6 +26,7 @@ function App() {
     borderCountries: [],
   });
   const [toDetailsScreen, setToDetailsScreen] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get("https://restcountries.com/v3.1/all");
@@ -43,6 +46,7 @@ function App() {
     fetchData();
   }, []);
 
+
   const toggleMode = () => {
     setMode(!mode);
   };
@@ -54,6 +58,7 @@ function App() {
   const goBack = () => {
     setToDetailsScreen(false);
   };
+
   const goToDetails = (id) => {
     const getCountry = country.find((n) => n.name.official === id);
     if (getCountry) {
@@ -122,29 +127,12 @@ function App() {
 
               <div className="select-div">
                 <div className="filter-div" onClick={toggleFilterDisplay}>
-                  <p>Filter by Region</p>
+                    <p >Filter by Region</p>
+                    <FontAwesomeIcon icon={faAngleDown} size="2px" />
                   </div>
                   {filterDisplay ? <div className="options-div">
                     {regions.map(n => <p key={n}>{n}</p>)}
-                  
-                  {/* <p>Volvo</p>
-                  <p>Volvo</p>
-                  <p>Volvo</p>
-                  <p>Volvo</p> */}
                 </div>: null}
-           
-
-                {/* <select id="region" name="region" className="select-options">
-                <option value="volv">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="fiat">Fiat</option>
-                <option value="audi">Audi</option>
-                <option value="volv">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="fiat">Fiat</option>
-                <option value="audi">Audi</option>
-                
-              </select> */}
               </div>
             </div>
             <main className="main">

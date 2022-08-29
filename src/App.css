@@ -4,6 +4,12 @@
   margin: 0 auto;
 }
 
+.filter-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .header {
   margin-bottom: 1rem;
 }
@@ -82,7 +88,7 @@ select {
 
   .filter-div p {
     margin: 0;
-
+    color: white;
     font-size: .8rem;
   }
 
