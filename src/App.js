@@ -7,9 +7,12 @@ import { faSearch,faAngleDown} from '@fortawesome/free-solid-svg-icons'
 import CountryDetails from "./components/countrydetails/CountryDetails";
 import Button from "./components/Buton/Button";
 
+let globalCountryData = [];
+
 function App() {
   const [country, setCountry] = useState([]);
   const [regions, setRegions] = useState([]);
+  const [pickedRegion, setPickedRegion] = useState("Filter by Region");
   const [mode, setMode] = useState(false);
   const [filterDisplay, setFilterDisplay] = useState(false);
   const [countryDetail, setCountryDetail] = useState({
@@ -32,6 +35,7 @@ function App() {
       const response = await axios.get("https://restcountries.com/v3.1/all");
       let regionData=[]
       if (response.data) {
+        globalCountryData=response.data
         setCountry(response.data);
         response.data.forEach(element => {
           if (!regionData.includes(element.region)) {
@@ -46,6 +50,39 @@ function App() {
     fetchData();
   }, []);
 
+  const pickRegion = (picked) => {
+    let pickedName = regions.find(n => n === picked)
+    let regionData = globalCountryData.filter(n => n.region==pickedName);
+    switch (pickedName) {
+      case "Africa":
+        setPickedRegion("Africa")
+        setCountry(regionData)
+        break;
+      case "Americas":
+        setPickedRegion("Americas")
+        setCountry(regionData)
+        break;
+        case "Antarctic":
+        setPickedRegion("Antarctic")
+        setCountry(regionData)
+        break;
+        case "Asia":
+        setPickedRegion("Asia")
+        setCountry(regionData)
+        break;
+        case "Europe":
+        setPickedRegion("Europe")
+        setCountry(regionData)
+        break;
+        case "Oceania":
+        setPickedRegion("Oceania")
+        setCountry(regionData)
+        break;
+      default:
+          setPickedRegion("Filter by Region")
+      
+    }
+  }
 
   const toggleMode = () => {
     setMode(!mode);
@@ -62,7 +99,6 @@ function App() {
   const goToDetails = (id) => {
     const getCountry = country.find((n) => n.name.official === id);
     if (getCountry) {
-      console.log(Object.values(getCountry.name.nativeName)[0].common);
       const borders = [];
 
       getCountry.borders.forEach((element) => {
@@ -127,11 +163,11 @@ function App() {
 
               <div className="select-div">
                 <div className="filter-div" onClick={toggleFilterDisplay}>
-                    <p >Filter by Region</p>
-                    <FontAwesomeIcon icon={faAngleDown} size="2px" />
+                    <p >{pickedRegion}</p>
+                    <FontAwesomeIcon icon={faAngleDown} size="1x" className="angledown" />
                   </div>
                   {filterDisplay ? <div className="options-div">
-                    {regions.map(n => <p key={n}>{n}</p>)}
+                    {regions.map(n => <p key={n} onClick={()=>pickRegion(n)} >{n}</p>)}
                 </div>: null}
               </div>
             </div>
