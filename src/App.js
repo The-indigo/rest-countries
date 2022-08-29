@@ -7,6 +7,7 @@ import Button from "./components/Buton/Button";
 
 function App() {
   const [country, setCountry] = useState([]);
+  const [regions, setRegions] = useState([]);
   const [mode, setMode] = useState(false);
   const [filterDisplay, setFilterDisplay] = useState(false);
   const [countryDetail, setCountryDetail] = useState({
@@ -26,11 +27,19 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get("https://restcountries.com/v3.1/all");
+      let regionData=[]
       if (response.data) {
         setCountry(response.data);
+        response.data.forEach(element => {
+          if (!regionData.includes(element.region)) {
+            regionData.push(element.region)
+          }
+        });
+        regionData.sort()
+        setRegions(regionData)
       }
-      // console.log(response.data);
     };
+    
     fetchData();
   }, []);
 
@@ -116,11 +125,12 @@ function App() {
                   <p>Filter by Region</p>
                   </div>
                   {filterDisplay ? <div className="options-div">
+                    {regions.map(n => <p key={n}>{n}</p>)}
+                  
+                  {/* <p>Volvo</p>
                   <p>Volvo</p>
                   <p>Volvo</p>
-                  <p>Volvo</p>
-                  <p>Volvo</p>
-                  <p>Volvo</p>
+                  <p>Volvo</p> */}
                 </div>: null}
            
 
