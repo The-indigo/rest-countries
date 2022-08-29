@@ -8,18 +8,19 @@ import Button from "./components/Buton/Button";
 function App() {
   const [country, setCountry] = useState([]);
   const [mode, setMode] = useState(false);
+  const [filterDisplay, setFilterDisplay] = useState(false);
   const [countryDetail, setCountryDetail] = useState({
-        imageSource:'',
-  countryName:'',
-  nativeName:'',
-  population:'',
-  region:'',
-  subRegion:'',
-  capital:'',
-  topLevelDomain:'',
-  currencies:'',
-    languages:[],
-  borderCountries:[]
+    imageSource: "",
+    countryName: "",
+    nativeName: "",
+    population: "",
+    region: "",
+    subRegion: "",
+    capital: "",
+    topLevelDomain: "",
+    currencies: "",
+    languages: [],
+    borderCountries: [],
   });
   const [toDetailsScreen, setToDetailsScreen] = useState(false);
   useEffect(() => {
@@ -36,38 +37,41 @@ function App() {
   const toggleMode = () => {
     setMode(!mode);
   };
+
+  const toggleFilterDisplay = () => {
+    setFilterDisplay(!filterDisplay)
+  };
+
   const goBack = () => {
     setToDetailsScreen(false);
-  }
+  };
   const goToDetails = (id) => {
     const getCountry = country.find((n) => n.name.official === id);
     if (getCountry) {
-      console.log(Object.values(getCountry.name.nativeName)[0].common)
+      console.log(Object.values(getCountry.name.nativeName)[0].common);
       const borders = [];
 
-      getCountry.borders.forEach(element => {
-       const border=country.find(n=>n.cca3===element)
+      getCountry.borders.forEach((element) => {
+        const border = country.find((n) => n.cca3 === element);
         if (border) {
-        borders.push(border.name.common)
-      }
-     });
+          borders.push(border.name.common);
+        }
+      });
 
       setCountryDetail({
         imageSource: getCountry.flags.png,
-            countryName:getCountry.name.common,
-            population:getCountry.population,
-            region:getCountry.region,
-            subRegion:getCountry.subregion,
-            capital:getCountry.capital,
-            topLevelDomain:getCountry.tld,
-            currencies:Object.values(getCountry.currencies)[0].name,
-            languages:Object.values(getCountry.languages),
-        borderCountries:borders,
-            nativeName: Object.values(getCountry.name.nativeName)[0].common,
-
-      } );
+        countryName: getCountry.name.common,
+        population: getCountry.population,
+        region: getCountry.region,
+        subRegion: getCountry.subregion,
+        capital: getCountry.capital,
+        topLevelDomain: getCountry.tld,
+        currencies: Object.values(getCountry.currencies)[0].name,
+        languages: Object.values(getCountry.languages),
+        borderCountries: borders,
+        nativeName: Object.values(getCountry.name.nativeName)[0].common,
+      });
       setToDetailsScreen(true);
-
     }
   };
   return (
@@ -79,35 +83,48 @@ function App() {
         </div>
       </div>
       <div className="container">
-        {toDetailsScreen ?
-          
-            <CountryDetails
-              goBack={goBack}
-              nativeName={countryDetail.nativeName}
-              imageSource={countryDetail.imageSource}
-              countryName={countryDetail.countryName}
-              population={countryDetail.population}
-              region={countryDetail.region}
-              subRegion={countryDetail.subRegion}
-              capital={countryDetail.capital}
-              topLevelDomain={countryDetail.topLevelDomain}
-              currencies={countryDetail.currencies}
-              languages={countryDetail.languages.map(val => <span key={val}>{val},</span>)}
-              borderCountries={countryDetail.borderCountries.map(val =>
-                <Button key={val} buttonText={val} />
-              )}
-            
-            />
-          
-          :        
-          
-        <><div className="input-div">
-            <input
-              type="text"
-              className="search-box"
-              placeholder="Search for a country..." />
-            <div className="select-div">
-              <select id="region" name="region" className="select-options">
+        {toDetailsScreen ? (
+          <CountryDetails
+            goBack={goBack}
+            nativeName={countryDetail.nativeName}
+            imageSource={countryDetail.imageSource}
+            countryName={countryDetail.countryName}
+            population={countryDetail.population}
+            region={countryDetail.region}
+            subRegion={countryDetail.subRegion}
+            capital={countryDetail.capital}
+            topLevelDomain={countryDetail.topLevelDomain}
+            currencies={countryDetail.currencies}
+            languages={countryDetail.languages.map((val) => (
+              <span key={val}>{val},</span>
+            ))}
+            borderCountries={countryDetail.borderCountries.map((val) => (
+              <Button key={val} buttonText={val} />
+            ))}
+          />
+        ) : (
+          <>
+            <div className="input-div">
+              <input
+                type="text"
+                className="search-box"
+                placeholder="Search for a country..."
+              />
+
+              <div className="select-div">
+                <div className="filter-div" onClick={toggleFilterDisplay}>
+                  <p>Filter by Region</p>
+                  </div>
+                  {filterDisplay ? <div className="options-div">
+                  <p>Volvo</p>
+                  <p>Volvo</p>
+                  <p>Volvo</p>
+                  <p>Volvo</p>
+                  <p>Volvo</p>
+                </div>: null}
+           
+
+                {/* <select id="region" name="region" className="select-options">
                 <option value="volv">Volvo</option>
                 <option value="saab">Saab</option>
                 <option value="fiat">Fiat</option>
@@ -116,9 +133,11 @@ function App() {
                 <option value="saab">Saab</option>
                 <option value="fiat">Fiat</option>
                 <option value="audi">Audi</option>
-              </select>
+                
+              </select> */}
+              </div>
             </div>
-          </div><main className="main">
+            <main className="main">
               {country.map((n) => (
                 <Country
                   click={() => goToDetails(n.name.official)}
@@ -127,16 +146,14 @@ function App() {
                   countryName={n.name.common}
                   population={n.population}
                   region={n.region}
-                  capital={n.capital} />
+                  capital={n.capital}
+                />
               ))}
-            </main></>
-
-
-          
-        }
+            </main>
+          </>
+        )}
       </div>
     </div>
-       
   );
 }
 

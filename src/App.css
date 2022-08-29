@@ -33,9 +33,11 @@
 
 .search-box {
   width: 80%;
-  background: hsl(209, 23%, 22%) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
-  padding: 1rem;
+  /* background: hsl(209, 23%, 22%) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center; */
+  /* padding: 1rem; */
+  background-color: hsl(209, 23%, 22%);
   display: block;
+  border: none;
 }
 
 .search-box::placeholder {
@@ -46,7 +48,7 @@
 .select-div {
   margin-top: 2rem;
   width: 60%;
-  background: hsl(209, 23%, 22%)
+  /* background: hsl(209, 23%, 22%) */
 }
 
 select {
@@ -67,9 +69,21 @@ select {
 }
 
 @media (min-width:376px) {
-  select {
+
+  /* select {
     padding-top: 1rem;
     padding-bottom: 1rem;
+  } */
+  .filter-div {
+    background: hsl(209, 23%, 22%);
+    padding: .5rem 1rem;
+    border-radius: 3px;
+  }
+
+  .filter-div p {
+    margin: 0;
+
+    font-size: .8rem;
   }
 
   .main {
@@ -79,10 +93,36 @@ select {
     justify-content: space-between;
   }
 
+  input {
+    border: 2px solid blue;
+  }
+
   .input-div {
-    border: 2px solid red;
     display: flex;
+    position: relative;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  .options-div {
+    position: absolute;
+    margin-top: .2rem;
+    width: 20%;
+    right: 0;
+    background: hsl(209, 23%, 22%);
+    padding-bottom: .5rem;
+    padding-top: .5rem;
+    border-radius: 3px;
+
+
+  }
+
+  .options-div p {
+    margin: .2rem;
+    font-weight: light;
+    font-size: .85rem;
+    padding-left: 1rem;
+
   }
 
   .search-box {
@@ -90,6 +130,8 @@ select {
   }
 
   .select-div {
+
     width: 20%;
+    margin: 0;
   }
 }
