@@ -57,29 +57,36 @@ function App() {
       case "Africa":
         setPickedRegion("Africa")
         setCountry(regionData)
+        setFilterDisplay(!filterDisplay)
         break;
       case "Americas":
         setPickedRegion("Americas")
         setCountry(regionData)
+          setFilterDisplay(!filterDisplay)
         break;
         case "Antarctic":
         setPickedRegion("Antarctic")
         setCountry(regionData)
+          setFilterDisplay(!filterDisplay)
         break;
         case "Asia":
         setPickedRegion("Asia")
         setCountry(regionData)
+          setFilterDisplay(!filterDisplay)
         break;
         case "Europe":
         setPickedRegion("Europe")
         setCountry(regionData)
+          setFilterDisplay(!filterDisplay)
         break;
         case "Oceania":
         setPickedRegion("Oceania")
         setCountry(regionData)
+          setFilterDisplay(!filterDisplay)
         break;
       default:
-          setPickedRegion("Filter by Region")
+        setPickedRegion("Filter by Region")
+          setFilterDisplay(!filterDisplay)
       
     }
   }

@@ -7,7 +7,17 @@
 .filter-div {
   display: flex;
   align-items: center;
+  position: relative;
   justify-content: space-between;
+  background: hsl(209, 23%, 22%);
+  padding: .5rem 1rem;
+  border-radius: 3px;
+}
+
+.filter-div p {
+  margin: 0;
+  color: white;
+  font-size: .8rem;
 }
 
 .header {
@@ -31,10 +41,33 @@
   justify-content: space-between;
 }
 
-
+.input-div {
+  position: relative;
+}
 
 .main {
   margin-top: 2rem;
+}
+
+.options-div {
+  position: absolute;
+  margin-top: .2rem;
+  width: 100%;
+  right: 0;
+  background: hsl(209, 23%, 22%);
+  padding-bottom: .5rem;
+  padding-top: .5rem;
+  border-radius: 3px;
+
+
+}
+
+.options-div p {
+  margin: .2rem;
+  font-weight: light;
+  font-size: .85rem;
+  padding-left: 1rem;
+
 }
 
 .search-box {
@@ -54,6 +87,7 @@
 .select-div {
   margin-top: 2rem;
   width: 60%;
+  position: relative;
   /* background: hsl(209, 23%, 22%) */
 }
 
@@ -76,22 +110,6 @@ select {
 
 @media (min-width:376px) {
 
-  /* select {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  } */
-  .filter-div {
-    background: hsl(209, 23%, 22%);
-    padding: .5rem 1rem;
-    border-radius: 3px;
-  }
-
-  .filter-div p {
-    margin: 0;
-    color: white;
-    font-size: .8rem;
-  }
-
   .main {
     display: flex;
     flex-wrap: wrap;
@@ -104,32 +122,12 @@ select {
   }
 
   .input-div {
-    display: flex;
     position: relative;
+    display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .options-div {
-    position: absolute;
-    margin-top: .2rem;
-    width: 20%;
-    right: 0;
-    background: hsl(209, 23%, 22%);
-    padding-bottom: .5rem;
-    padding-top: .5rem;
-    border-radius: 3px;
-
-
-  }
-
-  .options-div p {
-    margin: .2rem;
-    font-weight: light;
-    font-size: .85rem;
-    padding-left: 1rem;
-
-  }
 
   .search-box {
     width: 30%;

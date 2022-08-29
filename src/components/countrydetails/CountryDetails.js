@@ -1,4 +1,6 @@
 import './CountryDetails.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLongArrowLeft} from '@fortawesome/free-solid-svg-icons'
 const CountryDetails = ({
     goBack,
     imageSource,
@@ -15,8 +17,9 @@ const CountryDetails = ({
 }) => {
   return(
     <div>
-      <div className="back-button back-button-dark">
-        <p onClick={goBack}> Back</p>
+          <div className="back-button back-button-dark">
+             
+        <p onClick={goBack}><span > <FontAwesomeIcon className='iconAwesome' icon={faLongArrowLeft} size="1x" /></span> Back</p>
       </div>
       <main className="countrydetails-div countrydetails-div-dark">
         <div className="image-div">
