@@ -2,8 +2,8 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Country from "./components/country/Country";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch,faAngleDown} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import CountryDetails from "./components/countrydetails/CountryDetails";
 import Button from "./components/Buton/Button";
 
@@ -33,70 +33,69 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get("https://restcountries.com/v3.1/all");
-      let regionData=[]
+      let regionData = [];
       if (response.data) {
-        globalCountryData=response.data
+        globalCountryData = response.data;
         setCountry(response.data);
-        response.data.forEach(element => {
+        response.data.forEach((element) => {
           if (!regionData.includes(element.region)) {
-            regionData.push(element.region)
+            regionData.push(element.region);
           }
         });
-        regionData.sort()
-        setRegions(regionData)
+        regionData.sort();
+        setRegions(regionData);
       }
     };
-    
+
     fetchData();
   }, []);
 
   const pickRegion = (picked) => {
-    let pickedName = regions.find(n => n === picked)
-    let regionData = globalCountryData.filter(n => n.region==pickedName);
+    let pickedName = regions.find((n) => n === picked);
+    let regionData = globalCountryData.filter((n) => n.region === pickedName);
     switch (pickedName) {
       case "Africa":
-        setPickedRegion("Africa")
-        setCountry(regionData)
-        setFilterDisplay(!filterDisplay)
+        setPickedRegion("Africa");
+        setCountry(regionData);
+        setFilterDisplay(!filterDisplay);
         break;
       case "Americas":
-        setPickedRegion("Americas")
-        setCountry(regionData)
-          setFilterDisplay(!filterDisplay)
+        setPickedRegion("Americas");
+        setCountry(regionData);
+        setFilterDisplay(!filterDisplay);
         break;
-        case "Antarctic":
-        setPickedRegion("Antarctic")
-        setCountry(regionData)
-          setFilterDisplay(!filterDisplay)
+      case "Antarctic":
+        setPickedRegion("Antarctic");
+        setCountry(regionData);
+        setFilterDisplay(!filterDisplay);
         break;
-        case "Asia":
-        setPickedRegion("Asia")
-        setCountry(regionData)
-          setFilterDisplay(!filterDisplay)
+      case "Asia":
+        setPickedRegion("Asia");
+        setCountry(regionData);
+        setFilterDisplay(!filterDisplay);
         break;
-        case "Europe":
-        setPickedRegion("Europe")
-        setCountry(regionData)
-          setFilterDisplay(!filterDisplay)
+      case "Europe":
+        setPickedRegion("Europe");
+        setCountry(regionData);
+        setFilterDisplay(!filterDisplay);
         break;
-        case "Oceania":
-        setPickedRegion("Oceania")
-        setCountry(regionData)
-          setFilterDisplay(!filterDisplay)
+      case "Oceania":
+        setPickedRegion("Oceania");
+        setCountry(regionData);
+        setFilterDisplay(!filterDisplay);
         break;
       default:
-        setPickedRegion("Filter by Region")
-          setFilterDisplay(!filterDisplay)
-      
+        setPickedRegion("Filter by Region");
+        setFilterDisplay(!filterDisplay);
     }
-  }
+  };
 
   const toggleMode = () => {
     setMode(!mode);
   };
 
   const toggleFilterDisplay = () => {
-    setFilterDisplay(!filterDisplay)
+    setFilterDisplay(!filterDisplay);
   };
 
   const goBack = () => {
@@ -162,20 +161,38 @@ function App() {
         ) : (
           <>
             <div className="input-div">
-              <input
-                type="text"
-                className="search-box"
-                placeholder="Search for a country..."
-              />
+              <div className="searchinput-div">
+                <FontAwesomeIcon
+                  icon={faSearch}
+                    size="1x"
+                    className="search-icon"
+                />
+
+                <input
+                  type="text"
+                  className="search-box"
+                  placeholder="Search for a country..."
+                />
+              </div>
 
               <div className="select-div">
                 <div className="filter-div" onClick={toggleFilterDisplay}>
-                    <p >{pickedRegion}</p>
-                    <FontAwesomeIcon icon={faAngleDown} size="1x" className="angledown" />
+                  <p>{pickedRegion}</p>
+                  <FontAwesomeIcon
+                    icon={faAngleDown}
+                    size="1x"
+                    className="angledown"
+                  />
+                </div>
+                {filterDisplay ? (
+                  <div className="options-div">
+                    {regions.map((n) => (
+                      <p key={n} onClick={() => pickRegion(n)}>
+                        {n}
+                      </p>
+                    ))}
                   </div>
-                  {filterDisplay ? <div className="options-div">
-                    {regions.map(n => <p key={n} onClick={()=>pickRegion(n)} >{n}</p>)}
-                </div>: null}
+                ) : null}
               </div>
             </div>
             <main className="main">
