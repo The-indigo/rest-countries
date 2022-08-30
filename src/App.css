@@ -53,6 +53,10 @@ input:focus {
   outline: none;
 }
 
+input::placeholder {
+  font-size: .8rem;
+}
+
 .main {
   margin-top: 2rem;
 }
@@ -83,7 +87,6 @@ input:focus {
   border: none;
   width: 100%;
   display: block;
-  /* border: 2px solid red; */
 }
 
 .search-icon {
@@ -102,7 +105,6 @@ input:focus {
   margin-top: 2rem;
   width: 60%;
   position: relative;
-  /* background: hsl(209, 23%, 22%) */
 }
 
 select {
@@ -130,10 +132,6 @@ select {
     gap: 1rem;
     justify-content: space-between;
   }
-
-  /* input {
-    border: 2px solid blue;
-  } */
 
   .input-div {
     position: relative;

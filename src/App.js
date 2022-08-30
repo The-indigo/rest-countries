@@ -12,6 +12,7 @@ let globalCountryData = [];
 function App() {
   const [country, setCountry] = useState([]);
   const [regions, setRegions] = useState([]);
+  const [searchValue,setSearchValue]=useState('')
   const [pickedRegion, setPickedRegion] = useState("Filter by Region");
   const [mode, setMode] = useState(false);
   const [filterDisplay, setFilterDisplay] = useState(false);
@@ -107,12 +108,13 @@ function App() {
     if (getCountry) {
       const borders = [];
 
-      getCountry.borders.forEach((element) => {
-        const border = country.find((n) => n.cca3 === element);
-        if (border) {
+      if (getCountry.hasOwnProperty('borders')) {
+ getCountry.borders.forEach((element) => {
+        const border = globalCountryData.find((n) => n.cca3 === element);
           borders.push(border.name.common);
-        }
-      });
+        
+      });      }
+     
 
       setCountryDetail({
         imageSource: getCountry.flags.png,
@@ -130,12 +132,39 @@ function App() {
       setToDetailsScreen(true);
     }
   };
+
+  const handleSearchCountry = (e) => {
+    let value=e.target.value
+    setSearchValue(e.target.value);
+        if (value !== "") {
+      let searchData;
+      if (pickedRegion !== "Filter by Region") {
+        searchData = globalCountryData.filter((n) =>
+          n.name.common
+            .toLowerCase()
+            .includes(value.toLowerCase() && n.region === pickedRegion)
+        );
+      } else {
+        searchData = globalCountryData.filter((n) =>
+          n.name.common.toLowerCase().includes(value.toLowerCase())
+        );
+      }
+
+      setCountry(searchData);
+    } else {
+      if (pickedRegion === "Filter by Region") {
+        setCountry(globalCountryData);
+      } else {
+        setCountry(globalCountryData.filter((n) => n.region ===pickedRegion));
+      }
+    }
+  }
   return (
     <div>
       <div className={`header ${mode ? "header-light" : "header-dark"}`}>
         <div className="header-container container">
           <h4>Where in the world?</h4>
-          <p onClick={toggleMode}>Dark Mode</p>
+          <p onClick={toggleMode}> Dark Mode</p>
         </div>
       </div>
       <div className="container">
@@ -172,6 +201,8 @@ function App() {
                   type="text"
                   className="search-box"
                   placeholder="Search for a country..."
+                    onChange={handleSearchCountry}
+                    value={searchValue}
                 />
               </div>
 
