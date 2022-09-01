@@ -72,6 +72,12 @@
   justify-content: space-between;
 }
 
+.header-container p:hover,
+.select-div,
+.filter-div {
+  cursor: pointer;
+}
+
 .input-div {
   position: relative;
 }

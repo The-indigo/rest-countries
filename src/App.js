@@ -174,6 +174,7 @@ function App() {
                 icon={faMoon}
                 size="1x"
               />
+              <FontAwesomeIcon icon="fal fa-moon" />
             </span>{" "}
             Dark Mode
           </p>
