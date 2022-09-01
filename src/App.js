@@ -3,7 +3,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Country from "./components/country/Country";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSearch,
+  faAngleDown,
+  faMoon,
+} from "@fortawesome/free-solid-svg-icons";
 import CountryDetails from "./components/countrydetails/CountryDetails";
 import Button from "./components/Buton/Button";
 
@@ -12,7 +16,7 @@ let globalCountryData = [];
 function App() {
   const [country, setCountry] = useState([]);
   const [regions, setRegions] = useState([]);
-  const [searchValue,setSearchValue]=useState('')
+  const [searchValue, setSearchValue] = useState("");
   const [pickedRegion, setPickedRegion] = useState("Filter by Region");
   const [mode, setMode] = useState(false);
   const [filterDisplay, setFilterDisplay] = useState(false);
@@ -108,13 +112,12 @@ function App() {
     if (getCountry) {
       const borders = [];
 
-      if (getCountry.hasOwnProperty('borders')) {
- getCountry.borders.forEach((element) => {
-        const border = globalCountryData.find((n) => n.cca3 === element);
+      if (getCountry.hasOwnProperty("borders")) {
+        getCountry.borders.forEach((element) => {
+          const border = globalCountryData.find((n) => n.cca3 === element);
           borders.push(border.name.common);
-        
-      });      }
-     
+        });
+      }
 
       setCountryDetail({
         imageSource: getCountry.flags.png,
@@ -134,9 +137,9 @@ function App() {
   };
 
   const handleSearchCountry = (e) => {
-    let value=e.target.value
+    let value = e.target.value;
     setSearchValue(e.target.value);
-        if (value !== "") {
+    if (value !== "") {
       let searchData;
       if (pickedRegion !== "Filter by Region") {
         searchData = globalCountryData.filter((n) =>
@@ -155,16 +158,25 @@ function App() {
       if (pickedRegion === "Filter by Region") {
         setCountry(globalCountryData);
       } else {
-        setCountry(globalCountryData.filter((n) => n.region ===pickedRegion));
+        setCountry(globalCountryData.filter((n) => n.region === pickedRegion));
       }
     }
-  }
+  };
   return (
-    <div>
+    <div className={mode?"body-light":"body-dark"}>
       <div className={`header ${mode ? "header-light" : "header-dark"}`}>
         <div className="header-container container">
           <h4>Where in the world?</h4>
-          <p onClick={toggleMode}> Dark Mode</p>
+          <p onClick={toggleMode}>
+            <span>
+              {" "}
+              <FontAwesomeIcon
+                icon={faMoon}
+                size="1x"
+              />
+            </span>{" "}
+            Dark Mode
+          </p>
         </div>
       </div>
       <div className="container">
@@ -190,24 +202,25 @@ function App() {
         ) : (
           <>
             <div className="input-div">
-              <div className="searchinput-div">
+              <div className= {`searchinput-div ${mode ? "searchinput-div-light" : "searchinput-div-dark"}`}   >
                 <FontAwesomeIcon
                   icon={faSearch}
-                    size="1x"
-                    className="search-icon"
+                  size="1x"
+                  className="search-icon"
                 />
 
                 <input
                   type="text"
-                  className="search-box"
+                  className={`search-box ${mode ? "search-box-light" : "search-box-dark"}`}
                   placeholder="Search for a country..."
-                    onChange={handleSearchCountry}
-                    value={searchValue}
+                  onChange={handleSearchCountry}
+                  value={searchValue}
                 />
               </div>
 
               <div className="select-div">
-                <div className="filter-div" onClick={toggleFilterDisplay}>
+                  <div className= {`filter-div ${mode ? "filter-div-light" : "filter-div-dark"}`}
+                    onClick={toggleFilterDisplay}>
                   <p>{pickedRegion}</p>
                   <FontAwesomeIcon
                     icon={faAngleDown}
@@ -216,7 +229,7 @@ function App() {
                   />
                 </div>
                 {filterDisplay ? (
-                  <div className="options-div">
+                  <div className={`options-div ${mode ? "options-div-light" : "options-div-dark"}`} >
                     {regions.map((n) => (
                       <p key={n} onClick={() => pickRegion(n)}>
                         {n}
@@ -229,6 +242,7 @@ function App() {
             <main className="main">
               {country.map((n) => (
                 <Country
+                  mode={mode}
                   click={() => goToDetails(n.name.official)}
                   key={n.name.official}
                   imageSource={n.flags.png}

@@ -1,6 +1,18 @@
-.country-img {
-    height: 9rem;
+.country-dark {
+    background-color: hsl(209, 23%, 22%);
+    color: hsl(0, 0%, 100%);
 }
+
+.country-light {
+    background-color: hsl(0, 0%, 100%);
+    color: hsl(200, 15%, 8%);
+}
+
+.country-img {
+    height: 7.7rem;
+}
+
+
 
 .details-div {
     padding-left: 1.5rem;

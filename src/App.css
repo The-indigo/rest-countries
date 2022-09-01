@@ -1,3 +1,37 @@
+.body-dark {
+  background-color: hsl(207, 26%, 17%);
+}
+
+.body-light {
+  background-color: hsl(0, 0%, 98%);
+}
+
+
+.search-box-dark,
+.searchinput-div-dark,
+.filter-div-dark,
+.options-div-dark {
+  background-color: hsl(209, 23%, 22%);
+
+}
+
+.search-box-light,
+.searchinput-div-light,
+.filter-div-light,
+.options-div-light {
+  background-color: hsl(0, 0%, 100%);
+}
+
+.options-div-dark p,
+.filter-div-dark p {
+  color: hsl(0, 0%, 100%);
+}
+
+.options-div-light p,
+.filter-div-light p {
+  color: hsl(200, 15%, 8%);
+}
+
 .container {
   width: 90%;
   max-width: 1440px;
@@ -9,14 +43,12 @@
   align-items: center;
   position: relative;
   justify-content: space-between;
-  background: hsl(209, 23%, 22%);
   padding: .5rem 1rem;
   border-radius: 3px;
 }
 
 .filter-div p {
   margin: 0;
-  color: white;
   font-size: .8rem;
 }
 
@@ -32,7 +64,6 @@
 .header-light {
   background-color: hsl(0, 0%, 100%);
   color: hsl(200, 15%, 8%);
-
 }
 
 .header-container {
@@ -66,7 +97,6 @@ input::placeholder {
   margin-top: .2rem;
   width: 100%;
   right: 0;
-  background: hsl(209, 23%, 22%);
   padding-bottom: .5rem;
   padding-top: .5rem;
   border-radius: 3px;
@@ -79,11 +109,9 @@ input::placeholder {
   font-weight: light;
   font-size: .85rem;
   padding-left: 1rem;
-
 }
 
 .search-box {
-  background-color: hsl(209, 23%, 22%);
   border: none;
   width: 100%;
   display: block;
@@ -94,7 +122,6 @@ input::placeholder {
 }
 
 .searchinput-div {
-  background-color: hsl(209, 23%, 22%);
   border-radius: 3px;
   padding: .5rem;
   display: flex;
@@ -107,30 +134,13 @@ input::placeholder {
   position: relative;
 }
 
-select {
-  font: 1.25rem / 1.5 sans-serif;
-  display: block;
-  box-sizing: border-box;
-  width: 80%;
-  color: white;
-  border: none;
-  margin: 0 auto;
-  border-radius: 3px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  background: hsl(209, 23%, 22%) url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat 100% center;
-}
 
 @media (min-width:376px) {
 
   .main {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: space-between;
+    gap: 4%;
   }
 
   .input-div {
