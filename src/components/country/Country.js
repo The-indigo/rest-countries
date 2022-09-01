@@ -6,13 +6,12 @@ border-radius: 5px;
 overflow:hidden;
 width:90%;
 padding-bottom:1rem;
-
 margin-bottom:3rem;
- @media (max-width:375.9px ) {
+ @media (max-width:400px ) {
     margin:0 auto;
     margin-bottom:2rem
   }
-  @media (min-width:376px ) {
+  @media (min-width:400.01px ) {
    width:22%;   
   }
 `

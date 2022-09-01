@@ -141,7 +141,7 @@ input::placeholder {
 }
 
 
-@media (min-width:376px) {
+@media (min-width:400.01px) {
 
   .main {
     display: flex;
