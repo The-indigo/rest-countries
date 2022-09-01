@@ -14,6 +14,7 @@ import Button from "./components/Buton/Button";
 let globalCountryData = [];
 
 function App() {
+  
   const [country, setCountry] = useState([]);
   const [regions, setRegions] = useState([]);
   const [searchValue, setSearchValue] = useState("");
@@ -54,6 +55,16 @@ function App() {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (mode === false) {
+    document.body.style.backgroundColor ='hsl(207, 26%, 17%)'
+    } else {
+       document.body.style.backgroundColor ='hsl(0, 0%, 98%)'
+    }
+ 
+
+  },[mode])
 
   const pickRegion = (picked) => {
     let pickedName = regions.find((n) => n === picked);
@@ -97,6 +108,7 @@ function App() {
 
   const toggleMode = () => {
     setMode(!mode);
+  document.body.style.backgroundColor = 'hsl(207, 26%, 17%)'
   };
 
   const toggleFilterDisplay = () => {
@@ -163,18 +175,18 @@ function App() {
     }
   };
   return (
-    <div className={mode?"body-light":"body-dark"}>
+    
+      <div className={mode ? "body-light" : "body-dark"}>
       <div className={`header ${mode ? "header-light" : "header-dark"}`}>
         <div className="header-container container">
           <h4>Where in the world?</h4>
-          <p onClick={toggleMode}>
+          <p  onClick={toggleMode}>
             <span>
               {" "}
               <FontAwesomeIcon
                 icon={faMoon}
                 size="1x"
               />
-              <FontAwesomeIcon icon="fal fa-moon" />
             </span>{" "}
             Dark Mode
           </p>
@@ -183,6 +195,7 @@ function App() {
       <div className="container">
         {toDetailsScreen ? (
           <CountryDetails
+            mode={mode}
             goBack={goBack}
             nativeName={countryDetail.nativeName}
             imageSource={countryDetail.imageSource}
@@ -197,7 +210,7 @@ function App() {
               <span key={val}>{val},</span>
             ))}
             borderCountries={countryDetail.borderCountries.map((val) => (
-              <Button key={val} buttonText={val} />
+              <Button key={val}  mode={mode} buttonText={val} />
             ))}
           />
         ) : (
@@ -258,6 +271,7 @@ function App() {
         )}
       </div>
     </div>
+    
   );
 }
 

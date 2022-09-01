@@ -2,6 +2,7 @@ import './CountryDetails.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLongArrowLeft} from '@fortawesome/free-solid-svg-icons'
 const CountryDetails = ({
+  mode,
     goBack,
     imageSource,
   countryName,
@@ -16,12 +17,13 @@ const CountryDetails = ({
   borderCountries
 }) => {
   return(
-    <div>
-          <div className="back-button back-button-dark">
+    <div className='details'>
+      <div className={`back-button ${mode ? "back-button-light" : "back-button-dark"}`}>
+        
              
         <p onClick={goBack}><span > <FontAwesomeIcon className='iconAwesome' icon={faLongArrowLeft} size="1x" /></span> Back</p>
       </div>
-      <main className="countrydetails-div countrydetails-div-dark">
+      <main className={`countrydetails-div ${mode ? "countrydetails-div-light" : "countrydetails-div-dark"}`}>
         <div className="image-div">
           <img className='countrydetails-img' src={imageSource} alt="country flag" />
         </div>
