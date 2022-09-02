@@ -141,14 +141,16 @@ input::placeholder {
 }
 
 
-@media (min-width:400.01px) {
+@media (min-width:500.01px) {
 
   .main {
     display: flex;
     flex-wrap: wrap;
     gap: 4%;
   }
+}
 
+@media (min-width:800px) {
   .input-div {
     position: relative;
     display: flex;
@@ -163,6 +165,7 @@ input::placeholder {
 
   .select-div {
     width: 20%;
+    box-sizing: border-box;
     margin: 0;
   }
 }
