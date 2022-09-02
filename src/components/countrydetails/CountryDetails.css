@@ -1,5 +1,6 @@
 .back-button {
     width: 30%;
+    min-width: 100px;
     border-radius: 3px;
     padding: .4rem 1rem;
     text-align: center;
@@ -80,14 +81,10 @@
     margin-right: .7rem;
 }
 
-@media (min-width:376px) {
+@media (min-width:450px) {
     .image-div {
         width: 50%;
 
-    }
-
-    .countrydetails-text-2 {
-        margin-top: 0;
     }
 
     .countrydetails-text-div {
@@ -103,5 +100,11 @@
 
     .back-button {
         width: 10%;
+    }
+}
+
+@media (min-width:450px) and (max-width:800px) {
+    .image-div {
+        align-self: center;
     }
 }
