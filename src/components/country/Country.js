@@ -7,11 +7,19 @@ overflow:hidden;
 width:90%;
 padding-bottom:1rem;
 margin-bottom:3rem;
- @media (max-width:400px ) {
+ @media (max-width:500px ) {
     margin:0 auto;
     margin-bottom:2rem
   }
-  @media (min-width:400.01px ) {
+
+
+  @media( min-width:500.01px) and (max-width:650px){
+    width:45%
+  }
+  @media(min-width:650.01px) and (max-width:810px){
+    width:30%
+  }
+  @media (min-width:810.01px ) {
    width:22%;   
   }
 `
