@@ -11,8 +11,6 @@ margin-bottom:3rem;
     margin:0 auto;
     margin-bottom:2rem
   }
-
-
   @media( min-width:500.01px) and (max-width:650px){
     width:45%
   }
