@@ -14,7 +14,6 @@ import Button from "./components/Buton/Button";
 let globalCountryData = [];
 
 function App() {
-  
   const [country, setCountry] = useState([]);
   const [regions, setRegions] = useState([]);
   const [searchValue, setSearchValue] = useState("");
@@ -58,13 +57,11 @@ function App() {
 
   useEffect(() => {
     if (mode === false) {
-    document.body.style.backgroundColor ='hsl(207, 26%, 17%)'
+      document.body.style.backgroundColor = "hsl(207, 26%, 17%)";
     } else {
-       document.body.style.backgroundColor ='hsl(0, 0%, 98%)'
+      document.body.style.backgroundColor = "hsl(0, 0%, 98%)";
     }
- 
-
-  },[mode])
+  }, [mode]);
 
   const pickRegion = (picked) => {
     let pickedName = regions.find((n) => n === picked);
@@ -108,7 +105,7 @@ function App() {
 
   const toggleMode = () => {
     setMode(!mode);
-  document.body.style.backgroundColor = 'hsl(207, 26%, 17%)'
+    document.body.style.backgroundColor = "hsl(207, 26%, 17%)";
   };
 
   const toggleFilterDisplay = () => {
@@ -120,7 +117,12 @@ function App() {
   };
 
   const goToDetails = (id) => {
-    const getCountry = country.find((n) => n.name.official === id);
+    console.log(id);
+    let getCountry;
+    getCountry = country.find((n) => n.name.official === id);
+    if (getCountry === undefined) {
+      getCountry = country.find((n) => n.name.common === id);
+    }
     if (getCountry) {
       const borders = [];
 
@@ -175,18 +177,14 @@ function App() {
     }
   };
   return (
-    
-      <div className={mode ? "body-light" : "body-dark"}>
+    <div className={mode ? "body-light" : "body-dark"}>
       <div className={`header ${mode ? "header-light" : "header-dark"}`}>
         <div className="header-container container">
           <h4>Where in the world?</h4>
-          <p  onClick={toggleMode}>
+          <p onClick={toggleMode}>
             <span>
               {" "}
-              <FontAwesomeIcon
-                icon={faMoon}
-                size="1x"
-              />
+              <FontAwesomeIcon icon={faMoon} size="1x" />
             </span>{" "}
             Dark Mode
           </p>
@@ -210,13 +208,22 @@ function App() {
               <span key={val}>{val},</span>
             ))}
             borderCountries={countryDetail.borderCountries.map((val) => (
-              <Button key={val}  mode={mode} buttonText={val} />
+              <Button
+                key={val}
+                mode={mode}
+                buttonText={val}
+                click={() => goToDetails(val)}
+              />
             ))}
           />
         ) : (
           <>
             <div className="input-div">
-              <div className= {`searchinput-div ${mode ? "searchinput-div-light" : "searchinput-div-dark"}`}   >
+              <div
+                className={`searchinput-div ${
+                  mode ? "searchinput-div-light" : "searchinput-div-dark"
+                }`}
+              >
                 <FontAwesomeIcon
                   icon={faSearch}
                   size="1x"
@@ -225,7 +232,9 @@ function App() {
 
                 <input
                   type="text"
-                  className={`search-box ${mode ? "search-box-light" : "search-box-dark"}`}
+                  className={`search-box ${
+                    mode ? "search-box-light" : "search-box-dark"
+                  }`}
                   placeholder="Search for a country..."
                   onChange={handleSearchCountry}
                   value={searchValue}
@@ -233,8 +242,12 @@ function App() {
               </div>
 
               <div className="select-div">
-                  <div className= {`filter-div ${mode ? "filter-div-light" : "filter-div-dark"}`}
-                    onClick={toggleFilterDisplay}>
+                <div
+                  className={`filter-div ${
+                    mode ? "filter-div-light" : "filter-div-dark"
+                  }`}
+                  onClick={toggleFilterDisplay}
+                >
                   <p>{pickedRegion}</p>
                   <FontAwesomeIcon
                     icon={faAngleDown}
@@ -243,7 +256,11 @@ function App() {
                   />
                 </div>
                 {filterDisplay ? (
-                  <div className={`options-div ${mode ? "options-div-light" : "options-div-dark"}`} >
+                  <div
+                    className={`options-div ${
+                      mode ? "options-div-light" : "options-div-dark"
+                    }`}
+                  >
                     {regions.map((n) => (
                       <p key={n} onClick={() => pickRegion(n)}>
                         {n}
@@ -271,7 +288,6 @@ function App() {
         )}
       </div>
     </div>
-    
   );
 }
 

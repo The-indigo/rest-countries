@@ -11,9 +11,9 @@ padding:.3rem 1rem;
 overflow:hidden;
 margin-right:15px;
 `
-const Button = ({ buttonText,mode }) => {
+const Button = ({ buttonText,mode,click }) => {
     return (
-        <StyledButton className={mode ? "styled-button-light" : "styled-button-dark"}> 
+        <StyledButton className={mode ? "styled-button-light" : "styled-button-dark"} onClick={click} > 
             <p className="button-text">{buttonText}</p>
         </StyledButton>
     )
