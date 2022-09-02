@@ -117,7 +117,6 @@ function App() {
   };
 
   const goToDetails = (id) => {
-    console.log(id);
     let getCountry;
     getCountry = country.find((n) => n.name.official === id);
     if (getCountry === undefined) {
