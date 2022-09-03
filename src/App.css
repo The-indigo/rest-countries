@@ -23,7 +23,8 @@
 }
 
 .options-div-dark p,
-.filter-div-dark p {
+.filter-div-dark p,
+.search-box-dark::placeholder {
   color: hsl(0, 0%, 100%);
 }
 
@@ -70,6 +71,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.header-container h1 {
+  font-size: 1.1rem;
+  cursor: pointer;
 }
 
 .header-container p:hover,

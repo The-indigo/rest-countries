@@ -116,6 +116,24 @@ function App() {
     setToDetailsScreen(false);
   };
 
+
+
+
+
+
+  const goHome = () => {
+    setToDetailsScreen(false);
+    setPickedRegion("Filter by Region")
+    setSearchValue("")
+    setCountry(globalCountryData)
+  }
+
+
+
+
+
+
+
   const goToDetails = (id) => {
     let getCountry;
     getCountry = country.find((n) => n.name.official === id);
@@ -158,7 +176,7 @@ function App() {
         searchData = globalCountryData.filter((n) =>
           n.name.common
             .toLowerCase()
-            .includes(value.toLowerCase() && n.region === pickedRegion)
+            .includes(value.toLowerCase()) && n.region === pickedRegion
         );
       } else {
         searchData = globalCountryData.filter((n) =>
@@ -177,9 +195,9 @@ function App() {
   };
   return (
     <div className={mode ? "body-light" : "body-dark"}>
-      <div className={`header ${mode ? "header-light" : "header-dark"}`}>
+      <header className={`header ${mode ? "header-light" : "header-dark"}`}>
         <div className="header-container container">
-          <h4>Where in the world?</h4>
+          <h1 onClick={goHome}>Where in the world?</h1>
           <p onClick={toggleMode}>
             <span>
               {" "}
@@ -188,7 +206,7 @@ function App() {
             Dark Mode
           </p>
         </div>
-      </div>
+      </header>
       <div className="container">
         {toDetailsScreen ? (
           <CountryDetails
@@ -223,10 +241,12 @@ function App() {
                   mode ? "searchinput-div-light" : "searchinput-div-dark"
                 }`}
               >
-                <FontAwesomeIcon
-                  icon={faSearch}
-                  size="1x"
-                  className="search-icon"
+                  <FontAwesomeIcon
+                    icon={faSearch}
+                    size="1x"
+                    width={11}
+                    className="search-icon"
+                    color={mode?"hsl(200, 15%, 8%)":"white"}
                 />
 
                 <input
